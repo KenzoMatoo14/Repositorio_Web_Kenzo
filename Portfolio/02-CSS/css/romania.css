@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+}
+
+.Top, .Mid, .Bot {
+    width: 200px;
+    height: 200px;
+}
+
+.container{
+    display: flex;
+}
+
+.Top {
+    background-color: Red;
+    position: relative;
+    left: 400px;
+}
+
+.Mid {
+    background-color: Blue;
+    position: relative;
+    left: -200px;
+}
+
+.Bot {
+    background-color: Yellow;
+    position: relative;
+    left: -200px;
+}
