@@ -112,6 +112,7 @@ input[type="submit"]:hover {
   position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: 50px;
 }
 
 .header {
@@ -552,22 +553,18 @@ input[type="submit"]:hover {
 }
 
 .cloud {
-  position: fixed;
-  top: 50px;
-  width: 20%;
-  opacity: 0.9;
-  z-index: 2;
+  position: sticky;
+  top: 0; 
+  z-index: 10; 
 }
 
 .cloud1 {
-  left: 10%;
+  top: 10px;
 }
 
 .cloud2 {
-  right: 10%;
+  top: 20px;
 }
-
-/* Parte de destination.html */
 
 .destination-section {
   margin: 20px 0;
