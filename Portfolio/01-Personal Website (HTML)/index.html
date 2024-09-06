@@ -34,12 +34,16 @@
       </table>
     </div>
 
+    <hr>
+
     <div>
       <h2>Background</h2>
       <p>
         Vivo la vida con humor y Dirección con el proposito de disfrutar mi vida al maximo, hacer todo lo que podria hacer y morir sin arrepentimientos
       </p>
     </div>
+
+    <hr>
 
     <div>
       <h2>Education</h2>
@@ -57,19 +61,21 @@
           </tr>
           <tr>
             <td><em>2018-2020:</em> <b>Secundaria Colegio Cervantes Bosque</b></td>
-            <td><img src="Images/cropped-escudo-VF-06-1-1.png" alt="Colegio Cervantes Bosque"></td>
+            <td><a href="https://ccbosque.edu.mx" target="_blank"><img src="Images/cropped-escudo-VF-06-1-1.png" alt="Colegio Cervantes Bosque"></a></td>
           </tr>
           <tr>
             <td><em>2020-2023:</em> <b>Preparatoria Colegio Cervantes Costa</b></td>
-            <td><img src="Images/Colegio-Cervantes.png" alt="Colegio Cervantes Costa"></td>
+            <td><a href="https://cervantes.edu.mx" target="_blank"><img src="Images/Colegio-Cervantes.png" alt="Colegio Cervantes Costa"></a></td>
           </tr>
           <tr>
             <td><em>2023-Today:</em> <b>Universidad Panamericana</b></td>
-            <td><img src="Images/escudo-UPA.jpg" alt="Universidad Panamericana"></td>
+            <td><a href="https://www.up.edu.mx/campus-guadalajara/" target="_blank"><img src="Images/escudo-UPA.jpg" alt="Universidad Panamericana"></a></td>
           </tr>
         </thead>
       </table>
     </div>
+
+    <hr>
 
     <div>
       <h2>Skills</h2>
@@ -81,6 +87,8 @@
         <li>Buena Concentración - %79</li>
       </ol>
     </div>
+
+    <hr>
 
     <div>
       <h2>Hobbies</h2>
@@ -136,20 +144,140 @@
       </div>
     </div>
 
-    
+    <hr>
 
-    <div class="agenda" id="even_section">
-      <h2>Agenda</h2>
-      <form action="#">
-        <label for="event">Event</label>
-        <input type="text" name="event" placeholder="Event" value="New event"/>
-        <input type="checkbox"/>
-        <input type="submit" value="Agregar"/>
-        <input type="button" value="button1"/>
-      </form>
-    </div>
+    <div>
+      <h2>My Heroes</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Date Birth/Death</th>
+            <th>Profession</th>
+            <th>Achievements/Work</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spiderman / Peter Benjamin Parker</td>
+            <td><img src="Images\descarga.jpeg" alt="Spiderman"/></td>
+            <td>1962</td>
+            <td>Estudiante, fotógrafo, científico, superhéroe</td>
+            <td>Miembro de equipos de superhéroes: Aunque ha trabajado en solitario la mayor parte de su carrera, Spider-Man ha sido parte de equipos como los Vengadores y los Cuatro Fantásticos.
+              Personaje icónico de Marvel: Ha sido el protagonista de diversas series animadas, películas exitosas, y es considerado uno de los personajes más populares de la cultura pop.</td>
+          </tr>
+          <tr>
+            <td>Eiichiro Oda</td>
+            <td><img src="Images\eiichiro_oda.jpg" alt="Eiichiro Oda"/></td>
+            <td> 1 de enero de 1975</td>
+            <td>Mangaka (autor de manga)</td>
+            <td>Creador de "One Piece", uno de los mangas más populares y vendidos de todos los tiempos. Ha sido galardonado por su obra con múltiples premios y reconocimientos. Su trabajo ha influido enormemente en la industria del manga y anime a nivel mundial.</td>
+          </tr>
+          <tr>
+            <td>Akira Toriyama</td>
+            <td><img src="Images\Akira_Toriyama_in_1982.jpg" alt="Akira Toriyama"/></td>
+            <td>5 de abril de 1955 - 1 de marzo de 2024</td>
+            <td>Mangaka (autor de manga), diseñador de personajes</td>
+            <td>Creador de "Dragon Ball", una de las franquicias de manga y anime más influyentes y exitosas del mundo. También trabajó como diseñador de personajes para videojuegos como "Dragon Quest". Ha recibido múltiples premios y es considerado una leyenda en la industria del manga y el anime.</td>
+          </tr>
+      
+        </tbody>
+      </table>
+    </div>
 
-    <div class="top-link">
+    <hr>
+
+    <h2>Weekly Schedule</h2>
+
+    <form>
+      <table>
+          <thead>
+              <tr>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Description</th>
+                  <th>Place</th>
+                  <th>Type</th>
+                  <th>Notes</th>
+                  <th>With</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>
+                      <select name="status">
+                          <option value="free">Free</option>
+                          <option value="busy">Busy</option>
+                      </select>
+                  </td>
+                  <td><input type="date" name="date"></td>
+                  <td><input type="time" name="start"></td>
+                  <td><input type="time" name="end"></td>
+                  <td><input type="text" name="description" placeholder="Description"></td>
+                  <td><input type="text" name="place" placeholder="Place"></td>
+                  <td>
+                      <select name="type">
+                          <option value="work">Work</option>
+                          <option value="personal">Personal</option>
+                          <option value="meeting">Meeting</option>
+                          <option value="other">Other</option>
+                      </select>
+                  </td>
+                  <td><textarea name="notes" rows="2" placeholder="Notes"></textarea></td>
+                  <td><input type="text" name="with" placeholder="With"></td>
+              </tr>
+          </tbody>
+      </table>
+
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <table border="1">
+      <thead>
+          <tr>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Description</th>
+              <th>Place</th>
+              <th>Type</th>
+              <th>Notes</th>
+              <th>With</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+          </tr>
+      </tbody>
+  </table>
+  
+
+    <div>
       <a href="#">Go to top</a>
     </div>
   </body>

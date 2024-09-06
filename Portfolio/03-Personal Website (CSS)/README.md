@@ -23,13 +23,12 @@ This exercise will guide us to learn and experience the basic concepts of CSS in
 - Change h3s to
   - 'Montserrat', sans-serif
   - Select a third color.
-- Modify the hr's to:
-  - Dotted, color #EAF6F6 and width 6px
+- Modify the hr's to: 
+  - Dotted, color #EAF6F6 and width 6px 
   - No bottom border
   - Width in the screen of 4%
   - Margins of 100px left and right
 - Change the L&F of links
-
   - Eliminate the underlining
   - Make them bold.
   - On hover over, change its color to green

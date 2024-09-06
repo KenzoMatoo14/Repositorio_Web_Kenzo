@@ -4,95 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Great Destination</title>
-  <link href="styles.css" type="text/css" rel="stylesheet"/>
+  <link href="css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-  <h1>Paris</h1>
-  <img src="Images\La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques,_Paris_août_2014_(2).jpg" alt="Paris" width="640">
+  <nav class="nav">
+    <a href="index.html" target="_self">Volver al Index</a>
+    <a href="#Paris">Paris</a>
+    <a href="#Amsterdam">Amsterdam</a>
+    <a href="#LasVegas">Las Vegas</a>
+    <a href="#Dublin">Dublin</a>
+    <a href="#Bruselas">Bruselas</a>
+  </nav>
 
-  <p>
-    París: La capital de Francia, conocida como la "Ciudad de la Luz".
-    Es famosa por sus monumentos icónicos como la Torre Eiffel, el Louvre y la Catedral de Notre-Dame,
-    así como por su elegancia, moda y gastronomía. Un destino romántico y cultural por excelencia.
-  </p>
+  <div class="container">
+    <section id="Paris" class="destination-section">
+      <div class="destination-header">
+        <h1 class="title">Paris</h1>
+        <img src="Images/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques,_Paris_août_2014_(2).jpg" alt="Paris" class="destination-img">
+      </div>
+      <div class="destination-content">
+        <p class="description">
+          París: La capital de Francia, conocida como la "Ciudad de la Luz". Es famosa por sus monumentos icónicos como la Torre Eiffel, el Louvre y la Catedral de Notre-Dame, así como por su elegancia, moda y gastronomía. Un destino romántico y cultural por excelencia.
+        </p>
+        <ul class="info-list">
+          <li><strong>Province/State:</strong> Île-de-France</li>
+          <li><strong>Country:</strong> France</li>
+          <li><strong>Population:</strong> ~2.1 million (city), ~12 million (metropolitan area)</li>
+          <li><strong>Latitude & Longitude:</strong> 48.8566° N, 2.3522° E</li>
+          <li><strong>Flag of the country:</strong><br><img class="flags" src="Images/Flag_of_France_(1794–1815,_1830–1974).svg.png" alt="Flag of France"></li>
+        </ul>
+      </div>
+    </section>
 
-  <ul>
-    <li><strong>Province/State:</strong> Île-de-France</li>
-    <li><strong>Country:</strong> France</li>
-    <li><strong>Population:</strong> ~2.1 million (city), ~12 million (metropolitan area)</li>
-    <li><strong>Latitude & Longitude:</strong> 48.8566° N, 2.3522° E</li>
-    <li><strong>Flag of the country:</strong><br><img class="flags" src="Images\Flag_of_France_(1794–1815,_1830–1974).svg.png" alt="Flag of France" ></li>
-  </ul>
-
-  <h1>Amsterdam</h1>
-  <img src="Images\1698226240350.jpg" alt="Amsterdam" width="640">
-
-  <p>
-    Ámsterdam: La capital de los Países Bajos, conocida por sus canales pintorescos,
-    casas estrechas con fachadas inclinadas y una rica historia. Ámsterdam es famosa por sus museos,
-    como el Rijksmuseum y la Casa de Ana Frank, así como por su vida nocturna vibrante y su cultura ciclista.
-  </p>
-
-  <ul>
-    <li><strong>Province/State:</strong> North Holland</li>
-    <li><strong>Country:</strong> Netherlands</li>
-    <li><strong>Population:</strong> ~872,000 (city), ~2.5 million (metropolitan area)</li>
-    <li><strong>Latitude & Longitude:</strong> 52.3676° N, 4.9041° E</li>
-    <li><strong>Flag of the country:</strong><br><img class="flags" src="Images\bandera-de-Paises-Bajos-colores-RGB.png" alt="Flag of Netherlands" ></li>
-  </ul>
-
-  <h1>Las Vegas</h1>
-  <img src="Images\images.jpeg" alt="Las Vegas" width="640">
-
-  <p>
-    Las Vegas: Una ciudad en el desierto de Nevada, Estados Unidos, conocida mundialmente por sus casinos,
-    entretenimiento de alto nivel y vida nocturna extravagante.
-    Es un destino de lujo y excesos, con espectáculos impresionantes, 
-    hoteles temáticos y la icónica franja de Las Vegas.
-  </p>
-
-  <ul>
-    <li><strong>Province/State:</strong> Nevada</li>
-    <li><strong>Country:</strong> United States</li>
-    <li><strong>Population:</strong> ~650,000 (city), ~2.3 million (metropolitan area)</li>
-    <li><strong>Latitude & Longitude:</strong> 36.1699° N, 115.1398° W</li>
-    <li><strong>Flag of the country:</strong><br><img class="flags" src="Images\png-clipart-flag-of-the-united-states-drawing-usa-gerb-flag-united-states.png" alt="Flag of United States"></li>
-  </ul>
-
-  <h1>Dublin</h1>
-  <img src="Images\dublin-1520287124.jpg" alt="Dublin" width="640">
-
-  <p>
-    Dublín: La capital de Irlanda, famosa por su historia literaria, pubs acogedores y ambiente amigable.
-    Dublín ofrece una mezcla de tradición y modernidad,
-    con sitios históricos como el Trinity College y la Catedral de San Patricio,
-    además de una vibrante escena musical y cultural.
-  </p>
-
-  <ul>
-    <li><strong>Province/State:</strong> Leinster</li>
-    <li><strong>Country:</strong> Ireland</li>
-    <li><strong>Population:</strong> ~554,000 (city), ~1.4 million (metropolitan area)</li>
-    <li><strong>Latitude & Longitude:</strong> 53.3498° N, 6.2603° W</li>
-    <li><strong>Flag of the country:</strong><br><img class="flags" src="Images\ie1.png" alt="Flag of Ireland" ></li>
-  </ul>
-
-  <h1>Bruselas</h1>
-  <img src="Images\eyJpZGVudGlmaWVyIjoyNzcyLCJ0eXBlIjoiYXNzZXQifQ==_720.png" alt="Bruselas" width="640">
-
-  <p>
-    Bruselas: La capital de Bélgica y sede de la Unión Europea.
-    Bruselas es una ciudad cosmopolita conocida por su arquitectura Art Nouveau, su famosa Grand Place,
-    y delicias culinarias como el chocolate belga y los gofres. Es un centro cultural y político europeo.
-  </p>
-
-  <ul>
-    <li><strong>Province/State:</strong> Brussels-Capital Region</li>
-    <li><strong>Country:</strong> Belgium</li>
-    <li><strong>Population:</strong> ~1.2 million (city), ~2.5 million (metropolitan area)</li>
-    <li><strong>Latitude & Longitude:</strong> 50.8503° N, 4.3517° E</li>
-    <li><strong>Flag of the country:</strong><br><img  class="flags" src="Images\png-transparent-flag-of-belgium-belgian-waffle-national-flag-flag-miscellaneous-flag-rectangle-thumbnail.png" alt="Flag of Belgium" ></li>
-  </ul>
-
+    <section id="Amsterdam" class="destination-section">
+      <div class="destination-header">
+        <h1 class="title">Amsterdam</h1>
+        <img src="Images/1698226240350.jpg" alt="Amsterdam" class="destination-img">
+      </div>
+      <div class="destination-content">
+        <p class="description">
+          Ámsterdam: La capital de los Países Bajos, conocida por sus canales pintorescos, casas estrechas con fachadas inclinadas y una rica historia. Ámsterdam es famosa por sus museos, como el Rijksmuseum y la Casa de Ana Frank, así como por su vida nocturna vibrante y su cultura ciclista.
+        </p>
+        <ul class="info-list">
+          <li><strong>Province/State:</strong> North Holland</li>
+          <li><strong>Country:</strong> Netherlands</li>
+          <li><strong>Population:</strong> ~872,000 (city), ~2.5 million (metropolitan area)</li>
+          <li><strong>Latitude & Longitude:</strong> 52.3676° N, 4.9041° E</li>
+          <li><strong>Flag of the country:</strong><br><img class="flags" src="Images/bandera-de-Paises-Bajos-colores-RGB.png" alt="Flag of Netherlands"></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="Las vegas" class="destination-section">
+      <div class="destination-header">
+        <h1 class="title">Las Vegas</h1>
+        <img src="Images/images.jpeg" alt="Las Vegas" class="destination-img">
+      </div>
+      <div class="destination-content">
+        <p class="description">
+          Las Vegas: Una ciudad en el desierto de Nevada, Estados Unidos, conocida mundialmente por sus casinos, entretenimiento de alto nivel y vida nocturna extravagante. Es un destino de lujo y excesos, con espectáculos impresionantes, hoteles temáticos y la icónica franja de Las Vegas.
+        </p>
+        <ul class="info-list">
+          <li><strong>Province/State:</strong> Nevada</li>
+          <li><strong>Country:</strong> United States</li>
+          <li><strong>Population:</strong> ~650,000 (city), ~2.3 million (metropolitan area)</li>
+          <li><strong>Latitude & Longitude:</strong> 36.1699° N, 115.1398° W</li>
+          <li><strong>Flag of the country:</strong><br><img class="flags" src="Images/png-clipart-flag-of-the-united-states-drawing-usa-gerb-flag-united-states.png" alt="Flag of United States"></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="Dublin" class="destination-section">
+      <div class="destination-header">
+        <h1 class="title">Dublin</h1>
+        <img src="Images/dublin-1520287124.jpg" alt="Dublin" class="destination-img">
+      </div>
+      <div class="destination-content">
+        <p class="description">
+          Dublín: La capital de Irlanda, famosa por su historia literaria, pubs acogedores y ambiente amigable. Dublín ofrece una mezcla de tradición y modernidad, con sitios históricos como el Trinity College y la Catedral de San Patricio, además de una vibrante escena musical y cultural.
+        </p>
+        <ul class="info-list">
+          <li><strong>Province/State:</strong> Leinster</li>
+          <li><strong>Country:</strong> Ireland</li>
+          <li><strong>Population:</strong> ~554,000 (city), ~1.4 million (metropolitan area)</li>
+          <li><strong>Latitude & Longitude:</strong> 53.3498° N, 6.2603° W</li>
+          <li><strong>Flag of the country:</strong><br><img class="flags" src="Images/ie1.png" alt="Flag of Ireland"></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="Bruselas" class="destination-section">
+      <div class="destination-header">
+        <h1 class="title">Bruselas</h1>
+        <img src="Images/eyJpZGVudGlmaWVyIjoyNzcyLCJ0eXBlIjoiYXNzZXQifQ==_720.png" alt="Bruselas" class="destination-img">
+      </div>
+      <div class="destination-content">
+        <p class="description">
+          Bruselas: La capital de Bélgica y sede de la Unión Europea. Bruselas es una ciudad cosmopolita conocida por su arquitectura Art Nouveau, su famosa Grand Place, y delicias culinarias como el chocolate belga y los gofres. Es un centro cultural y político europeo.
+        </p>
+        <ul class="info-list">
+          <li><strong>Province/State:</strong> Brussels-Capital Region</li>
+          <li><strong>Country:</strong> Belgium</li>
+          <li><strong>Population:</strong> ~1.2 million (city), ~2.5 million (metropolitan area)</li>
+          <li><strong>Latitude & Longitude:</strong> 50.8503° N, 4.3517° E</li>
+          <li><strong>Flag of the country:</strong><br><img class="flags" src="Images/png-transparent-flag-of-belgium-belgian-waffle-national-flag-flag-miscellaneous-flag-rectangle-thumbnail.png" alt="Flag of Belgium"></li>
+        </ul>
+      </div>
+    </section>
+    
+  </div>
 </body>
 </html>
