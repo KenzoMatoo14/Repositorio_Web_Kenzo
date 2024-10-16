@@ -1,15 +1,19 @@
-/*
-    Prime Factorization - Have the user enter a number and find
-    all Prime Factors (if there are any) and display them.
-*/
+function displayPrimeFactors() {
+  const num = parseInt(document.getElementById("num").value);
+  if (isNaN(num) || num <= 1) {
+      document.getElementById("pf").innerText = "Please enter a valid number greater than 1.";
+      return;
+  }
+  const primeFactors = getPrimeFactors(num);
+  document.getElementById("pf").innerText = `The prime factors of ${num} are: ${primeFactors.join(", ")}`;
+}
 
 var getPrimeFactors = function (n) {
   "use strict";
 
   function isPrime(n) {
-    var i;
-
-    for (i = 2; i <= Math.sqrt(n); i++) {
+    if (n <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
       if (n % i === 0) {
         return false;
       }
@@ -17,14 +21,15 @@ var getPrimeFactors = function (n) {
     return true;
   }
 
-  var i,
-    sequence = [];
+  let sequence = [];
 
-  //TODO: Check which numbers are factors of n and also check if
-  // that number also happens to be a prime
+  for (let i = 2; i <= n; i++) {
+    if (n % i === 0 && isPrime(i)) {
+      sequence.push(i);
+    }
+  }
 
   return sequence;
 };
 
-// the prime factors for this number are: [ 2, 3, 5, 7, 11, 13 ]
-console.log(getPrimeFactors(30030));
+console.log(getPrimeFactors(30030)); // Debería imprimir los factores primos [2, 3, 5, 7, 11, 13]
