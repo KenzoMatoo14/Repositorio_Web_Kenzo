@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Test</title>
+</head>
+
+<body>
+    <% if (locals.error) { %>
+        <h3><%= error %></h3>
+    <% } %>
+    
+    <h2>Register:</h2>
+    <form action="/greet" method="get">
+        <input type="text" name="name" id="name" placeholder="Enter your name" required>
+        <input type="submit" value="Go Next">
+    </form>
+
+    <% if (locals.names && locals.names.length > 0) { %>
+        <h3>Greeting List:</h3>
+        <ul>
+            <% names.forEach(function(person, index) { %>
+                <li><a href="/wazzup/<%= index %>">Wazzup, <%= person %>!</a></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <hr>
+    <h2>TODO List:</h2>
+    <form action="/task" method="post">
+        <input type="text" name="task" id="task" placeholder="Enter your task" required>
+        <input type="submit" value="Add Task">
+    </form>
+
+    <% if (locals.tasks && locals.tasks.length > 0) { %>
+        <ul>
+            <% tasks.forEach(function(task, index) { %>
+                <li>
+                    <%= task %>
+                    <a href="/task/delete/<%= index %>">Delete</a>
+                    <a href="/task/move-up/<%= index %>">↑</a>
+                    <a href="/task/move-down/<%= index %>">↓</a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+</body>
+
+</html>
