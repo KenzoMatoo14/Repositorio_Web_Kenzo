@@ -13,6 +13,7 @@ var user = process.env.DB_USER;
 var password = process.env.DB_PASS;
 
 const mongoUrl = `mongodb+srv://${user}:${password}@webrepoport12.ya377.mongodb.net/?retryWrites=true&w=majority&appName=WebRepoPort12`;
+
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Definition of a schema
@@ -62,20 +63,17 @@ const path = require("path");
 
 app.use(async (req, res, next) => {
   const filePath = path.join(__dirname, "public/data/f1_2023.csv");
-  
-  // Check if any data is already loaded in the database to prevent duplicate loading.
   const driverCount = await Driver.countDocuments();
   if (driverCount === 0) {
     fs.readFile(filePath, "utf8", async (err, data) => {
       if (err) return next(err);
 
-      const rows = data.trim().split("\n").slice(1); // Skip header row
+      const rows = data.trim().split("\n").slice(1);
       const drivers = [];
       const teams = new Set();
 
       rows.forEach(row => {
         const [num, code, forename, surname, dob, nationality, url, teamName, teamNationality, teamUrl] = row.split(",");
-        
         const team = { name: teamName, nationality: teamNationality, url: teamUrl };
         teams.add(JSON.stringify(team));
 
@@ -84,35 +82,51 @@ app.use(async (req, res, next) => {
           code,
           forename,
           surname,
-          dob: new Date(dob),
+          dob: isNaN(Date.parse(dob)) ? null : new Date(dob),
           nationality,
           url,
           team
         });
       });
 
-      // Insert teams and drivers
       const teamDocs = Array.from(teams).map(team => JSON.parse(team));
       await Team.insertMany(teamDocs);
       await Driver.insertMany(drivers);
 
       console.log("Database populated with drivers and teams from CSV.");
-      next();
+      next(); // Move this here to ensure it only runs after data load
     });
   } else {
     next();
   }
 });
 
-app.post("/update/:id", async (req, res) => {
-  const { id } = req.params;
-  const { forename, surname, dob, nationality, teamName } = req.body;
+const isValidDate = (date) => !isNaN(Date.parse(date));
+
+app.post("/driver", async (req, res) => {
+  const { num, code, forename, surname, dob, nationality, url, teamName } = req.body;
+
+  // Validate the date format before creating a new Driver document
+  if (isNaN(Date.parse(dob))) {
+    return res.status(400).send("Invalid date format for Date of Birth.");
+  }
+
+  const newDriver = new Driver({
+    num,
+    code,
+    forename,
+    surname,
+    dob: new Date(dob),
+    nationality,
+    url,
+    team: { name: teamName }
+  });
 
   try {
-    await Driver.findByIdAndUpdate(id, { forename, surname, dob, nationality, team: { name: teamName } });
-    res.status(200).send("Update successful.");
+    await newDriver.save();
+    res.redirect("/"); // Redirect to the main page after submission
   } catch (error) {
-    res.status(500).send("Error updating driver/team.");
+    res.status(500).send("Error saving driver.");
   }
 });
 
@@ -122,7 +136,7 @@ app.get("/", async (req, res) => {
   try {
     const teams = await Team.find().sort({ name: 1 });
     const drivers = await Driver.find().sort({ num: 1 });
-    res.render("index", { countries, teams, drivers });
+    res.render("home", { countries, teams, drivers });
   } catch (error) {
     res.status(500).send("Error loading data.");
   }

@@ -7,60 +7,56 @@
 
 <body>
     <div class="container my-4">
-        <button onclick="toggleView()" id="toggleButton">Show Teams</button>
-        
-        <!-- Driver Form -->
-        <form id="driverForm" action="/driver" method="post" class="row g-3">
-            <!-- (Form fields similar to the earlier example) -->
+        <img src="/images/StarLion.png" alt="lion brewery" class="mb-4" />
+        <h1 class="text-center">Welcome to my F1 DB</h1>
+        <form action="/driver" method="post" class="row g-3">
+            <h2>Driver Information</h2>
+
+            <div class="col-md-6">
+                <input type="text" name="num" id="num" class="form-control" placeholder="Number" />
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="code" id="code" class="form-control" placeholder="Code" />
+            </div>
+
+            <div class="col-md-6">
+                <input type="text" name="forename" id="forename" class="form-control" placeholder="First Name" />
+            </div>
+            <div class="col-md-6">
+                <input type="text" name="surname" id="surname" class="form-control" placeholder="Last Name" />
+            </div>            
+
+            <div class="col-md-6">
+                <label for="dob" class="form-label">Date of Birth:</label>
+                <input type="date" name="dob" id="dob" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label for="url" class="form-label">Biography URL:</label>
+                <input type="url" name="url" id="url" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="nation" class="form-label">Nationality:</label>
+                <select name="nation" id="nation" class="form-select">
+                    <% countries.forEach(country => { %>
+                        <option value="<%= country.code %>"><%= country.label %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="team" class="form-label">Team:</label>
+                <select name="team" id="team" class="form-select">
+                    <% teams.forEach(team => { %>
+                        <option value="<%= team.name %>"><%= team.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
-
-        <!-- List View -->
-        <div id="driverList">
-            <h3>Driver List</h3>
-            <% drivers.forEach(driver => { %>
-                <div id="driver_<%= driver._id %>">
-                    <input type="text" value="<%= driver.forename %>" />
-                    <input type="text" value="<%= driver.surname %>" />
-                    <!-- Additional fields for editing -->
-                    <button onclick="saveChanges('<%= driver._id %>')">Save</button>
-                </div>
-            <% }); %>
-        </div>
-
-        <div id="teamList" style="display: none;">
-            <h3>Team List</h3>
-            <% teams.forEach(team => { %>
-                <div id="team_<%= team._id %>">
-                    <input type="text" value="<%= team.name %>" />
-                    <input type="text" value="<%= team.nationality %>" />
-                    <!-- Additional fields for editing -->
-                    <button onclick="saveChanges('<%= team._id %>')">Save</button>
-                </div>
-            <% }); %>
-        </div>
     </div>
-
-    <script>
-      function toggleView() {
-          const driverList = document.getElementById("driverList");
-          const teamList = document.getElementById("teamList");
-          const toggleButton = document.getElementById("toggleButton");
-
-          if (driverList.style.display === "none") {
-              driverList.style.display = "block";
-              teamList.style.display = "none";
-              toggleButton.textContent = "Show Teams";
-          } else {
-              driverList.style.display = "none";
-              teamList.style.display = "block";
-              toggleButton.textContent = "Show Drivers";
-          }
-      }
-
-      function saveChanges(id) {
-          // Collect data from input fields for the specified driver/team id and send via fetch to the server.
-      }
-    </script>
-
 
 <%- include('partials/footer') %>
