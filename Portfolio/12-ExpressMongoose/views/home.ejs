@@ -1,0 +1,66 @@
+<%- include('partials/header') %>
+
+<!--
+  url: String,
+  team: teamSchema,
+-->
+
+<body>
+    <div class="container my-4">
+        <button onclick="toggleView()" id="toggleButton">Show Teams</button>
+        
+        <!-- Driver Form -->
+        <form id="driverForm" action="/driver" method="post" class="row g-3">
+            <!-- (Form fields similar to the earlier example) -->
+        </form>
+
+        <!-- List View -->
+        <div id="driverList">
+            <h3>Driver List</h3>
+            <% drivers.forEach(driver => { %>
+                <div id="driver_<%= driver._id %>">
+                    <input type="text" value="<%= driver.forename %>" />
+                    <input type="text" value="<%= driver.surname %>" />
+                    <!-- Additional fields for editing -->
+                    <button onclick="saveChanges('<%= driver._id %>')">Save</button>
+                </div>
+            <% }); %>
+        </div>
+
+        <div id="teamList" style="display: none;">
+            <h3>Team List</h3>
+            <% teams.forEach(team => { %>
+                <div id="team_<%= team._id %>">
+                    <input type="text" value="<%= team.name %>" />
+                    <input type="text" value="<%= team.nationality %>" />
+                    <!-- Additional fields for editing -->
+                    <button onclick="saveChanges('<%= team._id %>')">Save</button>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <script>
+      function toggleView() {
+          const driverList = document.getElementById("driverList");
+          const teamList = document.getElementById("teamList");
+          const toggleButton = document.getElementById("toggleButton");
+
+          if (driverList.style.display === "none") {
+              driverList.style.display = "block";
+              teamList.style.display = "none";
+              toggleButton.textContent = "Show Teams";
+          } else {
+              driverList.style.display = "none";
+              teamList.style.display = "block";
+              toggleButton.textContent = "Show Drivers";
+          }
+      }
+
+      function saveChanges(id) {
+          // Collect data from input fields for the specified driver/team id and send via fetch to the server.
+      }
+    </script>
+
+
+<%- include('partials/footer') %>

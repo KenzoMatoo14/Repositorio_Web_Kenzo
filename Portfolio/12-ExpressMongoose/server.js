@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -8,7 +9,10 @@ app.use(express.static("public"));
 app.engine("ejs", require("ejs").renderFile);
 app.set("view engine", "ejs");
 
-const mongoUrl = "mongodb://127.0.0.1:27017/f1";
+var user = process.env.DB_USER;
+var password = process.env.DB_PASS;
+
+const mongoUrl = `mongodb+srv://${user}:${password}@webrepoport12.ya377.mongodb.net/?retryWrites=true&w=majority&appName=WebRepoPort12`;
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Definition of a schema
@@ -53,9 +57,77 @@ let countries = [
   { code: "DEN", label: "Denmark" },
 ];
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/html/index.html");
+const fs = require("fs");
+const path = require("path");
+
+app.use(async (req, res, next) => {
+  const filePath = path.join(__dirname, "public/data/f1_2023.csv");
+  
+  // Check if any data is already loaded in the database to prevent duplicate loading.
+  const driverCount = await Driver.countDocuments();
+  if (driverCount === 0) {
+    fs.readFile(filePath, "utf8", async (err, data) => {
+      if (err) return next(err);
+
+      const rows = data.trim().split("\n").slice(1); // Skip header row
+      const drivers = [];
+      const teams = new Set();
+
+      rows.forEach(row => {
+        const [num, code, forename, surname, dob, nationality, url, teamName, teamNationality, teamUrl] = row.split(",");
+        
+        const team = { name: teamName, nationality: teamNationality, url: teamUrl };
+        teams.add(JSON.stringify(team));
+
+        drivers.push({
+          num: Number(num),
+          code,
+          forename,
+          surname,
+          dob: new Date(dob),
+          nationality,
+          url,
+          team
+        });
+      });
+
+      // Insert teams and drivers
+      const teamDocs = Array.from(teams).map(team => JSON.parse(team));
+      await Team.insertMany(teamDocs);
+      await Driver.insertMany(drivers);
+
+      console.log("Database populated with drivers and teams from CSV.");
+      next();
+    });
+  } else {
+    next();
+  }
 });
+
+app.post("/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const { forename, surname, dob, nationality, teamName } = req.body;
+
+  try {
+    await Driver.findByIdAndUpdate(id, { forename, surname, dob, nationality, team: { name: teamName } });
+    res.status(200).send("Update successful.");
+  } catch (error) {
+    res.status(500).send("Error updating driver/team.");
+  }
+});
+
+
+
+app.get("/", async (req, res) => {
+  try {
+    const teams = await Team.find().sort({ name: 1 });
+    const drivers = await Driver.find().sort({ num: 1 });
+    res.render("index", { countries, teams, drivers });
+  } catch (error) {
+    res.status(500).send("Error loading data.");
+  }
+});
+
 
 app.listen(3000, (err) => {
   console.log("Listening on port 3000");
